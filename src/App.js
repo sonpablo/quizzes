@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import Button from 'components/Button';
+import QuestionCard from 'components/QuestionCard';
 import './App.css';
-
 function App() {
+
+  const onAnswer = (text) => {
+
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="main-container" >
+      <QuestionCard
+        footer={'Category - Difficult'}
+        header={'2-10'}
+        question={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus...'} />
+
+      <nav className="answers">
+        <Button onClick={(e) => onAnswer(e)}>one</Button>
+        <Button onClick={(e) => onAnswer(e)}>two</Button>
+        <Button onClick={(e) => onAnswer(e)}>three</Button>
+        <Button onClick={(e) => onAnswer(e)}>four</Button>
+      </nav>
+    </main>
   );
 }
 
