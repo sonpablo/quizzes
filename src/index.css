@@ -13,14 +13,8 @@ body {
   --aqua-green: #9ad3bc;
 }
 #root {
-  align-items: center;
   background-color: var(--aqua-green);
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   min-height: 100vh;
-  text-align: center;
 }
 
 * {

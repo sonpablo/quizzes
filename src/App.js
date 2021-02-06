@@ -1,27 +1,11 @@
-import Button from 'components/Button';
-import QuestionCard from 'components/QuestionCard';
+import Home from 'pages/Home';
 import './App.css';
-function App() {
 
-  const onAnswer = (text) => {
-
-  }
+export default function App() {
 
   return (
-    <main className="main-container" >
-      <QuestionCard
-        footer={'Category - Difficult'}
-        header={'2-10'}
-        question={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus...'} />
-
-      <nav className="answers">
-        <Button onClick={(e) => onAnswer(e)}>one</Button>
-        <Button onClick={(e) => onAnswer(e)}>two</Button>
-        <Button onClick={(e) => onAnswer(e)}>three</Button>
-        <Button onClick={(e) => onAnswer(e)}>four</Button>
-      </nav>
+    <main className='app-container'>
+      <Home />
     </main>
-  );
+  )
 }
-
-export default App;

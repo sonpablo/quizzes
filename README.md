@@ -4,12 +4,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Description
 
-Test yourself by doing some quizz.
+Test yourself by doing some quiz.
 
 ### I have used
 
 - Custom hooks
-- IntersectionObserver api
 - fetch api
 
 ### You can:
