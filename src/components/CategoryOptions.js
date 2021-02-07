@@ -8,11 +8,16 @@ const CATEGORIES = [
     { id: 12, name: "Music" },
 ]
 
-export default function CategoryOptions() {
+export default function CategoryOptions({ onSelect }) {
+
+
+    const onChange = (value) => {
+        onSelect(value)
+    }
 
     const renderCategories = () => {
         return CATEGORIES.map(category =>
-            <Radio key={category.id} id={category.id} name={'category'} value={category.name} />
+            <Radio key={category.id} id={category.id} name={'category'} onSelect={onChange} value={category.name} />
         )
     }
 

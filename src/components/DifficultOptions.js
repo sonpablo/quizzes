@@ -7,11 +7,15 @@ const DIFFICUlTLY = [
     "medium"
 ]
 
-export default function DifficultOptions() {
+export default function DifficultOptions({ onSelect }) {
+
+    const onChange = (value) => {
+        onSelect(value)
+    }
 
     const renderDifficulties = () => {
         return DIFFICUlTLY.map(item =>
-            <Radio className="do-items" key={item} id={item} name={'difficult'} value={item} />
+            <Radio className="do-items" key={item} id={item} name={'difficult'} onSelect={onChange} value={item} />
         )
     }
 

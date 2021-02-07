@@ -4,9 +4,11 @@ import React from 'react'
 import './QuizCard.css'
 
 export default function QuizCard() {
+
     const onAnswer = (text) => {
 
     }
+
     return (
         <main className="main-container" >
             <QuestionCard
