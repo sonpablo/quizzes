@@ -1,20 +1,17 @@
 
 import ButtonStart from 'components/ButtonStart'
-import CategoryOptions from 'components/CategoryOptions'
-import DifficultOptions from 'components/DifficultOptions'
 import QuizCard from 'components/QuizCard'
+import SetUpChallenge from 'components/SetUpChallenge'
 import React, { useState } from 'react'
 
 export default function Home() {
-
 
     const [category, setCategory] = useState(null)
     const [difficult, setDifficult] = useState(null)
     const [showQuiz, setShowQuiz] = useState(false)
 
     const onStart = () => {
-        category && difficult && setShowQuiz(true)
-
+        setShowQuiz(true)
     }
 
     const onSelectDifficult = (value) => {
@@ -25,24 +22,29 @@ export default function Home() {
         setCategory(value)
     }
 
-    const renderSetup = () => {
+    const renderQuiz = () => {
+        return <QuizCard category={category} difficult={difficult} />
+    }
+
+    const renderSetupChallenge = () => {
         return <>
-            <h1>Setup your challenge</h1>
-            <DifficultOptions onSelect={onSelectDifficult} />
-            <CategoryOptions onSelect={onSelectCategory} />
-            <div style={{ width: '250px' }}>
-                <ButtonStart onClick={onStart} text={'Start ►'} />
-            </div>
+            <SetUpChallenge onChangeCategory={onSelectCategory} onChangeDifficult={onSelectDifficult} />
+            {renderStart()}
         </>
     }
 
-    const renderQuiz = () => {
-        return <QuizCard />
+    const renderStart = () => {
+        return category && difficult && <div style={{ marginTop: '2em', width: '250px' }}>
+            <ButtonStart onClick={onStart} text={'Start ►'} />
+        </div>
     }
 
     return (
         <>
-            {!showQuiz ? renderQuiz() : renderSetup()}
+            {showQuiz
+                ? renderQuiz()
+                : renderSetupChallenge()
+            }
         </>
     )
 }

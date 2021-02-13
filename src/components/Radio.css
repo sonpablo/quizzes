@@ -1,7 +1,7 @@
 .radio-container {
   border-radius: 1em;
   background-color: #fff;
-  margin: 1em;
+  margin: 0.5em 1em;
 }
 .radio-container input[type="radio"] {
   display: none;
@@ -13,19 +13,12 @@
   color: var(--orange);
   cursor: pointer;
   display: flex;
-  font-size: 1.9em;
+  font-size: 1.8em;
   font-weight: 500;
-  padding: 0.2em 1em;
+  padding: 0.1em 1em;
   position: relative;
 }
-.radio-container label:before {
-  border: 0.15em solid var(--orange);
-  border-radius: 50%;
-  content: "";
-  height: 1em;
-  margin-right: 0.5em;
-  width: 1em;
-}
+
 .radio-container input[type="radio"]:checked + label {
   background-color: var(--orange);
   color: #fff;

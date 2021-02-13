@@ -10,7 +10,6 @@ const CATEGORIES = [
 
 export default function CategoryOptions({ onSelect }) {
 
-
     const onChange = (value) => {
         onSelect(value)
     }
@@ -23,7 +22,10 @@ export default function CategoryOptions({ onSelect }) {
 
     return (
         <div className='categories-container'>
-            { renderCategories()}
+            <h3>Categories</h3>
+            <section>
+                {renderCategories()}
+            </section>
         </div>
     )
 }

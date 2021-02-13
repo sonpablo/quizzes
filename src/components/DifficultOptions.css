@@ -1,3 +1,11 @@
 .difficulties-container {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.difficulties-container section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-transform: capitalize;
 }

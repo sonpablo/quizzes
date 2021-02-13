@@ -21,7 +21,10 @@ export default function DifficultOptions({ onSelect }) {
 
     return (
         <div className='difficulties-container'>
-            {renderDifficulties()}
+            <h3>Difficult</h3>
+            <section>
+                {renderDifficulties()}
+            </section>
         </div>
     )
 }

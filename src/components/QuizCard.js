@@ -1,26 +1,70 @@
 import Button from 'components/Button'
 import QuestionCard from 'components/QuestionCard'
-import React from 'react'
+import useQuiz from 'hooks/useQuiz'
+import React, { useState } from 'react'
 import './QuizCard.css'
 
-export default function QuizCard() {
+export default function QuizCard({ category, difficult }) {
+
+    const { feedback } = useQuiz({ category: category, difficult: difficult })
+    const [currentQuestion, setCurrentQuestion] = useState(0)
+    const [points, setPoints] = useState(0)
+    const [showResult, setShowResult] = useState(false)
+    const question = feedback.quiz[currentQuestion]
+
+    if (feedback.loading) return <span>Loading...</span>
+
+    if (feedback.hasError) return <span>{feedback.message}</span>
+
+    if (showResult) return <span>You earned {points} points.</span>
 
     const onAnswer = (text) => {
+        checkAnswer(text)
+        setNextStep()
+    }
 
+    const checkAnswer = (answers) => {
+
+        if (question.correct_answer === answers) {
+            switch (question.type) {
+                case 'boolean':
+                    setPoints(currentValue => currentValue + 5)
+                    break;
+                case 'multiple':
+                    setPoints(currentValue => currentValue + 10)
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    const setNextStep = () => {
+        currentQuestion + 1 === feedback.quiz.length
+            ? setShowResult(true)
+            : setCurrentQuestion(currentValue => currentValue + 1)
+    }
+
+
+
+    const renderAnswers = () => {
+        const answers = [...question.incorrect_answers, question.correct_answer]
+            .sort((a, b) => a.localeCompare(b))
+
+        return answers.map(answer => {
+            return <Button key={answer} onClick={() => onAnswer(answer)} text={answer} />
+        })
     }
 
     return (
         <main className="main-container" >
             <QuestionCard
-                footer={'Category - Difficult'}
-                header={'2-10'}
-                question={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus...'} />
+                footer={`${question.category} - ${question.difficulty}`}
+                header={`${currentQuestion + 1} - ${feedback.quiz.length}`}
+                question={question.question} />
 
             <nav className="answers">
-                <Button onClick={(e) => onAnswer(e)}>one</Button>
-                <Button onClick={(e) => onAnswer(e)}>two</Button>
-                <Button onClick={(e) => onAnswer(e)}>three</Button>
-                <Button onClick={(e) => onAnswer(e)}>four</Button>
+                {renderAnswers()}
             </nav>
         </main>
     )
