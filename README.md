@@ -18,7 +18,7 @@ Test yourself by doing some quiz.
 ### How to run
 
 1. Clone the repository.
-2. cd reposity's name.
+2. cd repository's name.
 3. Run `npm install` command.
 4. Run `npm start` command.
 5. Enjoy! ;)
