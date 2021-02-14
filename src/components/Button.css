@@ -1,19 +1,19 @@
 .button-container {
   background-color: transparent;
-  border-radius: 0.3em;  
-  border: 0.2em solid var(--orange);  
-  color: var(--orange);  
+  border-radius: 0.3em;
+  border: 0.2em solid var(--mainColor);
+  color: var(--mainColor);
   cursor: pointer;
   font-weight: 600;
-  font-size: 1em;  
+  font-size: 1em;
   transition: all 0.2s ease-in-out;
   padding: 0.7em 2em;
   width: 100%;
 }
 .button-container:hover,
 :focus {
-  background-color: var(--orange);
-  border: 0.15em solid var(--red); 
+  background-color: var(--mainColor);
+  border: 0.15em solid var(--alternativeColor);
   color: #fff;
   outline: none;
 }

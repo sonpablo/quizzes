@@ -1,8 +1,9 @@
 
-import ButtonStart from 'components/ButtonStart'
+import Button from 'components/Button'
 import QuizCard from 'components/QuizCard'
 import SetUpChallenge from 'components/SetUpChallenge'
 import React, { useState } from 'react'
+import { BUTTON_COLOR } from '../constants'
 
 export default function Home() {
 
@@ -29,22 +30,23 @@ export default function Home() {
     const renderSetupChallenge = () => {
         return <>
             <SetUpChallenge onChangeCategory={onSelectCategory} onChangeDifficult={onSelectDifficult} />
+            <br />
             {renderStart()}
         </>
     }
 
     const renderStart = () => {
-        return category && difficult && <div style={{ marginTop: '2em', width: '250px' }}>
-            <ButtonStart onClick={onStart} text={'Start ►'} />
-        </div>
+        return category && difficult &&
+            <Button color={BUTTON_COLOR.RED} onClick={onStart} text={'Start ►'} />
+
     }
 
     return (
-        <>
+        <div>
             {showQuiz
                 ? renderQuiz()
                 : renderSetupChallenge()
             }
-        </>
+        </div>
     )
 }

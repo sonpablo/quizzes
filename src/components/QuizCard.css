@@ -14,3 +14,9 @@
 .answers button:not(:first-of-type) {
   margin-top: 1em;
 }
+.message {
+  align-items: center;
+  display: flex;
+  font-weight: 900;
+  height: 100vh;
+}

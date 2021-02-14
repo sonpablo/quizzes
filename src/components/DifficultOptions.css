@@ -5,7 +5,10 @@
 }
 .difficulties-container section {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   text-transform: capitalize;
+}
+.difficulties-container section div:not(:first-of-type) {
+  margin-top: 1em;
 }

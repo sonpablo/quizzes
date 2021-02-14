@@ -13,7 +13,7 @@
   z-index: 1;
 }
 .question-card-container section {
-  animation: rightToOrigin 0.2s ease;
+  animation: rightToOrigin 1s ease;
   background-color: #eaf5fa;
   border-radius: 0.3em;
   display: block;

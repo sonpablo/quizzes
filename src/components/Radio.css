@@ -1,24 +1,31 @@
 .radio-container {
   border-radius: 1em;
   background-color: #fff;
-  margin: 0.5em 1em;
+  width: 100%;
+}
+.radio-container:hover {
+  background-color: var(--orange);
 }
 .radio-container input[type="radio"] {
   display: none;
 }
 .radio-container label {
   align-items: center;
-  border: 0.15em solid var(--orange);
+  border: 0.2em solid var(--orange);
   border-radius: 0.3em;
   color: var(--orange);
   cursor: pointer;
   display: flex;
-  font-size: 1.8em;
-  font-weight: 500;
-  padding: 0.1em 1em;
+  font-size: 1em;
+  font-weight: 600;
+  justify-content: center;
+  padding: 0.7em 2em;
   position: relative;
 }
-
+.radio-container label:hover {
+  border: 0.2em solid #fff;
+  color: #fff;
+}
 .radio-container input[type="radio"]:checked + label {
   background-color: var(--orange);
   color: #fff;
