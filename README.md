@@ -6,18 +6,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Test yourself by doing some quiz.
 
-### I have used
+### What I have used
 
 - Custom hooks
 - fetch api
 
 ### You can:
 
-\*Choose a challenge by topic or difficulty
+- Choose a challenge by topic or difficulty
 
 ### How to run
 
-1. Clone repository
-2. Run `npm install` command.
-3. Run `npm start` command.
-4. Enjoy! ;)
+1. Clone the repository.
+2. cd reposity's name.
+3. Run `npm install` command.
+4. Run `npm start` command.
+5. Enjoy! ;)
