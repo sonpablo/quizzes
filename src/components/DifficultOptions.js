@@ -14,14 +14,15 @@ export default function DifficultOptions({ onSelect }) {
     }
 
     const renderDifficulties = () => {
+
         return DIFFICUlTLY.map(item =>
-            <div>
-                <Radio key={item}
+            < div key={item}>
+                <Radio
                     id={item}
                     name={'difficult'}
                     onSelect={onChange}
                     value={item} />
-            </div>
+            </div >
         )
     }
 

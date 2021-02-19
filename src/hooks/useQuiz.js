@@ -25,10 +25,14 @@ export default function useQuiz({ category = null, difficult = null }) {
 
         getQuiz({ category: category, difficult: difficult })
             .then(response => {
+
+                const textWithQuotReplaced = JSON.stringify(response).replace(/&quot;/g, '\'')
+                const textParsedToJson = JSON.parse(textWithQuotReplaced)
+
                 const newFeedback = {
                     ...feedback,
                     loading: false,
-                    quiz: response
+                    quiz: textParsedToJson
                 }
                 setFeedback(newFeedback)
             })
