@@ -1,3 +1,4 @@
+import { GameContext } from 'context/GameContext';
 import Home from 'pages/Home';
 import './App.css';
 
@@ -5,7 +6,9 @@ export default function App() {
 
   return (
     <main className='app-container'>
-      <Home />
+      <GameContext>
+        <Home />
+      </GameContext>
     </main>
   )
 }

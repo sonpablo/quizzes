@@ -10,6 +10,8 @@ Test yourself by doing some quiz.
 
 - Custom hooks
 - fetch api
+- context api
+- reducer api
 
 ### You can:
 

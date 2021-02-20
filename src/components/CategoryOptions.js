@@ -1,4 +1,5 @@
 import Radio from 'components/Radio'
+import useGame from 'hooks/useGame'
 import React from 'react'
 import './CategoryOptions.css'
 
@@ -8,10 +9,15 @@ const CATEGORIES = [
     { id: 12, name: "Music" },
 ]
 
-export default function CategoryOptions({ onSelect }) {
+export default function CategoryOptions() {
+
+    const { dispatch } = useGame()
 
     const onChange = (value) => {
-        onSelect(value)
+        dispatch({
+            type: 'CATEGORY',
+            category: value
+        })
     }
 
     const renderCategories = () => {

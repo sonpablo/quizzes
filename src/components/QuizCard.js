@@ -1,5 +1,6 @@
 import Button from 'components/Button'
 import QuestionCard from 'components/QuestionCard'
+import QuizResult from 'components/QuizResult'
 import useQuiz from 'hooks/useQuiz'
 import React, { useState } from 'react'
 import { BUTTON_COLOR } from '../constants'
@@ -8,19 +9,19 @@ import './QuizCard.css'
 const POINTS_FOR_BOOLEAN = 5
 const POINTS_FOR_MULTIPLE = 10
 
-export default function QuizCard({ category, difficult }) {
+export default function QuizCard({ category, difficulty }) {
 
-    const { feedback } = useQuiz({ category: category, difficult: difficult })
+    const { feedback } = useQuiz({ category, difficulty })
     const [currentQuestion, setCurrentQuestion] = useState(0)
     const [points, setPoints] = useState(0)
-    const [showResult, setShowResult] = useState(false)
+    const [completed, setCompleted] = useState(false)
     const question = feedback.quiz[currentQuestion]
 
     if (feedback.loading) return <div className='message'> <span>Loading...</span></div>
 
     if (feedback.hasError) return <div className='message' ><span>{feedback.message}</span></div>
 
-    if (showResult) return <div className='message'><span>You earned {points} points.</span></div>
+    if (completed) return <QuizResult points={points} />
 
     const onAnswer = (text) => {
         checkAnswer(text)
@@ -45,7 +46,7 @@ export default function QuizCard({ category, difficult }) {
 
     const setNextStep = () => {
         currentQuestion + 1 === feedback.quiz.length
-            ? setShowResult(true)
+            ? setCompleted(true)
             : setCurrentQuestion(currentValue => currentValue + 1)
     }
 
@@ -54,7 +55,10 @@ export default function QuizCard({ category, difficult }) {
             .sort((a, b) => a.localeCompare(b))
 
         return answers.map(answer => {
-            return <Button color={BUTTON_COLOR.ORANGE} key={answer} onClick={() => onAnswer(answer)} text={answer} />
+            return <Button color={BUTTON_COLOR.ORANGE}
+                key={answer}
+                onClick={() => onAnswer(answer)}
+                text={answer} />
         })
     }
 
@@ -69,5 +73,4 @@ export default function QuizCard({ category, difficult }) {
             </nav>
         </main>
     )
-
 }

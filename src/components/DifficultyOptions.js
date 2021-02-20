@@ -1,16 +1,22 @@
 import Radio from 'components/Radio'
+import useGame from 'hooks/useGame'
 import React from 'react'
-import './DifficultOptions.css'
+import './DifficultyOptions.css'
 
 const DIFFICUlTLY = [
     "hard",
     "medium"
 ]
 
-export default function DifficultOptions({ onSelect }) {
+export default function DifficultyOptions() {
+
+    const { dispatch } = useGame()
 
     const onChange = (value) => {
-        onSelect(value)
+        dispatch({
+            type: 'DIFFICULTY',
+            difficulty: value
+        })
     }
 
     const renderDifficulties = () => {
@@ -28,7 +34,7 @@ export default function DifficultOptions({ onSelect }) {
 
     return (
         <div className='difficulties-container'>
-            <h3>Difficult</h3>
+            <h3>Difficulty</h3>
             <section>
                 {renderDifficulties()}
             </section>

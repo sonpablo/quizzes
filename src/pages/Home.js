@@ -2,48 +2,43 @@
 import Button from 'components/Button'
 import QuizCard from 'components/QuizCard'
 import SetUpChallenge from 'components/SetUpChallenge'
-import React, { useState } from 'react'
+import useGame from 'hooks/useGame'
+import React, { useEffect, useState } from 'react'
 import { BUTTON_COLOR } from '../constants'
 
 export default function Home() {
 
-    const [category, setCategory] = useState(null)
-    const [difficult, setDifficult] = useState(null)
-    const [showQuiz, setShowQuiz] = useState(false)
+    const [start, setStart] = useState(false)
+    const { game } = useGame()
+
+    useEffect(() => {
+        setStart(!game.configured && game.configured)
+    }, [game])
 
     const onStart = () => {
-        setShowQuiz(true)
-    }
-
-    const onSelectDifficult = (value) => {
-        setDifficult(value)
-    }
-
-    const onSelectCategory = (value) => {
-        setCategory(value)
+        setStart(true)
     }
 
     const renderQuiz = () => {
-        return <QuizCard category={category} difficult={difficult} />
+        return <QuizCard category={game.category} difficult={game.difficulty} />
     }
 
     const renderSetupChallenge = () => {
         return <>
-            <SetUpChallenge onChangeCategory={onSelectCategory} onChangeDifficult={onSelectDifficult} />
+            <SetUpChallenge />
             <br />
             {renderStart()}
         </>
     }
 
     const renderStart = () => {
-        return category && difficult &&
+        return game.configured &&
             <Button color={BUTTON_COLOR.RED} onClick={onStart} text={'Start ►'} />
-
     }
 
     return (
         <div>
-            {showQuiz
+            {start
                 ? renderQuiz()
                 : renderSetupChallenge()
             }

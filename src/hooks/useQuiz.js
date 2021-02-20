@@ -8,13 +8,13 @@ const INIT_FEEDBACK = {
     message: null
 }
 
-export default function useQuiz({ category = null, difficult = null }) {
+export default function useQuiz({ category = null, difficulty = null }) {
 
     const [feedback, setFeedback] = useState(INIT_FEEDBACK)
 
     useEffect(() => {
 
-        if (!category && !difficult) return
+        if (!category && !difficulty) return
 
         const newFeedback = {
             ...feedback,
@@ -23,7 +23,7 @@ export default function useQuiz({ category = null, difficult = null }) {
 
         setFeedback(newFeedback)
 
-        getQuiz({ category: category, difficult: difficult })
+        getQuiz({ category: category, difficult: difficulty })
             .then(response => {
 
                 const textWithQuotReplaced = JSON.stringify(response).replace(/&quot;/g, '\'')
@@ -46,7 +46,7 @@ export default function useQuiz({ category = null, difficult = null }) {
                 setFeedback(newFeedback)
             });
 
-    }, [category, difficult])
+    }, [category, difficulty])
 
     return { feedback }
 
